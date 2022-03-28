@@ -155,7 +155,14 @@ with, or no car if they are still waiting to be served.
 
 Responses:
 
-* **200 OK** With the car as the payload when the group is assigned to a car.
+* **200 OK** With the car as the payload when the group is assigned to a car. See below for the expected car representation 
+```json
+  {
+    "id": 1,
+    "seats": 4
+  }
+```
+
 * **204 No Content** When the group is waiting to be assigned to a car.
 * **404 Not Found** When the group is not to be found.
 * **400 Bad Request** When there is a failure in the request format or the
