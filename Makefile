@@ -28,5 +28,5 @@ debug:	### Debug Makefile itself
 	@echo $(UNAME)
 
 .PHONY: dockerize
-dockerize: build
+dockerize:
 	@docker build -t car-pooling-challenge:latest .

@@ -1,12 +1,4 @@
-FROM alpine:3.8
-
-# This Dockerfile is optimized for go binaries, change it as much as necessary
-# for your language of choice.
-
-RUN apk --no-cache add ca-certificates=20190108-r0 libc6-compat=1.1.19-r10
-
-EXPOSE 9091
-
-COPY car-pooling-challenge /
- 
-ENTRYPOINT [ "/car-pooling-challenge" ]
+FROM openjdk:11.0.3-jre-slim
+VOLUME /tmp
+COPY car-pooling-challenge/build/libs/car-pooling-challenge-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
