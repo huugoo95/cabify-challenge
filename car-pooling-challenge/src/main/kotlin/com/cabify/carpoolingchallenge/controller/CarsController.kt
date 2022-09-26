@@ -14,6 +14,6 @@ class CarsController(
 ) {
 
     @PutMapping("cars")
-    fun loadCars(@Valid @RequestBody request: List<CarsLoadRequest>): ResponseEntity<String> = ResponseEntity.ok(carService.putCars(request))
+    fun loadCars(@Valid @RequestBody request: List<CarsLoadRequest>): ResponseEntity<String> = ResponseEntity.ok(carService.loadCars(request))
 
 }

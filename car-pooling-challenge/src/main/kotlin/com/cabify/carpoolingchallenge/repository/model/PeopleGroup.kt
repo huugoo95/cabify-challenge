@@ -1,4 +1,4 @@
-package com.cabify.carpoolingchallenge.model
+package com.cabify.carpoolingchallenge.repository.model
 
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -6,10 +6,10 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "cars")
-data class Car(
+@Table(name = "people_groups")
+data class PeopleGroup(
     @Id
     val id: Long? = 0,
     @Column
-    val seats: Int? = 0
+    val people: Int? = 0
 )
