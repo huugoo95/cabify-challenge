@@ -28,7 +28,7 @@ class JourneyServiceImpl(
         assignedCar?.let {
             peopleGroup.car = it
             peopleGroupRepository.save(peopleGroup)
-            return ResponseEntity.ok("journey started in car " + it.id)
+            return ResponseEntity.ok().build()
         }
         peopleGroupRepository.save(peopleGroup)
         return ResponseEntity.accepted().build()
@@ -42,11 +42,11 @@ class JourneyServiceImpl(
         optionalGroup.get().car?.let {
             optionalGroup.get().id?.let { groupToDeleteId -> peopleGroupRepository.deleteById(groupToDeleteId) }
             reFieldCar(it)
-            return ResponseEntity.ok("Refilled Car")
+            return ResponseEntity.ok().build()
         }
 
         cancelJourneyAndDeleteGroup(cancelJourneyRequest.ID)
-        return ResponseEntity.ok("No car no refill")
+        return ResponseEntity.ok().build()
     }
 
     private fun reFieldCar(
