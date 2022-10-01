@@ -5,4 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface PeopleGroupRepository : JpaRepository<PeopleGroup, Long>
+interface PeopleGroupRepository : JpaRepository<PeopleGroup, Long>{
+
+    fun findTop1ByPeopleIsLessThanEqualAndCarIsNull(numberPersons : Int) : PeopleGroup?
+}

@@ -11,5 +11,5 @@ data class Car(
     var seats: Int? = 0,
 
     @OneToMany(mappedBy = "car")
-    var journey: List<Journey>? = null
+    var peopleGroup: MutableList<PeopleGroup> = mutableListOf()
 )

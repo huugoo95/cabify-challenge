@@ -1,6 +1,6 @@
 package com.cabify.carpoolingchallenge.dto
 
-class JourneyRequest(
+class NewJourneyRequest(
     val id: Long,
     val people: Int
 )
