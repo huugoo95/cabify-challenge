@@ -19,6 +19,7 @@ build:
        - car-pooling-challenge/build/libs/car-pooling-challenge-0.0.1-SNAPSHOT.jar app.jar
    script:
      - echo "Compiling the code..."
+     - cd car-pooling-challenge
      - gradle build
 
 # build_image:
