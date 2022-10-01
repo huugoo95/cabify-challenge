@@ -22,7 +22,7 @@ build:
      - cd car-pooling-challenge
      - gradle build
 
- build_image:
+build_image:
    stage: docker
    image: docker:latest
    variables:
