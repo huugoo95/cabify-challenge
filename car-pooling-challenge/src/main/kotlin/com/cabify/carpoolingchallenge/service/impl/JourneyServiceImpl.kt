@@ -75,8 +75,7 @@ class JourneyServiceImpl(
         peopleGroup.get().car?.let {
             return ResponseEntity.ok(CarResponse(it.id, it.seats))
         }
-        //ToDo  update ResponseEntity
-        return ResponseEntity.ok(CarResponse(null, null))
+        return ResponseEntity.noContent().build()
     }
 
     private fun existesGroupById(id: Long): Boolean {
@@ -84,7 +83,7 @@ class JourneyServiceImpl(
     }
 
     private fun getNextPeopleGroupForMaxPersons(personsNumber: Int): PeopleGroup? {
-        return peopleGroupRepository.findTop1ByPeopleIsLessThanEqualAndCarIsNull(personsNumber)
+        return peopleGroupRepository.findTop1ByPeopleIsLessThanEqualAndCarIsNullOrderByCreatedDateAsc(personsNumber)
     }
 
     private fun cancelJourneyAndDeleteGroup(id: Long) {

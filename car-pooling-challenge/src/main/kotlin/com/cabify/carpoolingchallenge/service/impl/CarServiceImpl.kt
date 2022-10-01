@@ -6,6 +6,7 @@ import com.cabify.carpoolingchallenge.repository.PeopleGroupRepository
 import com.cabify.carpoolingchallenge.repository.model.Car
 import com.cabify.carpoolingchallenge.service.CarService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 
 @Service
@@ -16,12 +17,12 @@ class CarServiceImpl(
     private val peopleGroupRepository: PeopleGroupRepository
 ) : CarService {
 
-    override fun loadCars(carsLoadRequest: List<CarsLoadRequest>): String {
+    override fun loadCars(carsLoadRequest: List<CarsLoadRequest>): ResponseEntity<Any> {
         val cars = carsLoadRequest.map { Car(it.id, it.seats) }
         peopleGroupRepository.deleteAll()
         carRepository.deleteAll()
         carRepository.saveAll(cars)
-        return "ok"
+        return ResponseEntity.ok().build()
     }
 
     override fun getCarsAvailableByPeopleGroup(minFreeSeats: Int): Car? {

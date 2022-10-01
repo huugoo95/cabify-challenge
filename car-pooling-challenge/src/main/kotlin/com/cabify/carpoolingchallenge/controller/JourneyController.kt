@@ -5,18 +5,21 @@ import com.cabify.carpoolingchallenge.dto.FindJourneyRequest
 import com.cabify.carpoolingchallenge.dto.NewJourneyRequest
 import com.cabify.carpoolingchallenge.service.JourneyService
 import org.springframework.http.ResponseEntity
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
+@Validated
 @RestController
 class JourneyController(
     private val journeyService: JourneyService
 ) {
-
     @PostMapping("journey")
-    fun requestJourney(@Valid @RequestBody journeyRequest: NewJourneyRequest): ResponseEntity<Any> =
+    fun requestJourney(
+        @Valid @RequestBody journeyRequest: NewJourneyRequest
+    ): ResponseEntity<Any> =
         journeyService.requestJourney(journeyRequest)
 
     @PostMapping("dropoff")
@@ -26,6 +29,4 @@ class JourneyController(
     @PostMapping("locate")
     fun locateGroup(@Valid locateGroupRequest: FindJourneyRequest): ResponseEntity<CarResponse> =
         journeyService.locateJourney(locateGroupRequest)
-
-
 }

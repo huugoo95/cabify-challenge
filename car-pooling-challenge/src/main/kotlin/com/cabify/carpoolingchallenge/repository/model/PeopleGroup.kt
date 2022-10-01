@@ -1,5 +1,7 @@
 package com.cabify.carpoolingchallenge.repository.model
 
+import org.hibernate.annotations.CreationTimestamp
+import java.util.*
 import javax.persistence.*
 
 @Entity
@@ -9,6 +11,9 @@ data class PeopleGroup(
     val id: Long? = 0,
     @Column
     val people: Int? = 0,
+    @Column
+    @field:CreationTimestamp
+    var createdDate: Date? = null,
 
     @ManyToOne
     var car: Car? = null

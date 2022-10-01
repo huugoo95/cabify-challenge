@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface PeopleGroupRepository : JpaRepository<PeopleGroup, Long>{
 
-    fun findTop1ByPeopleIsLessThanEqualAndCarIsNull(numberPersons : Int) : PeopleGroup?
+    fun findTop1ByPeopleIsLessThanEqualAndCarIsNullOrderByCreatedDateAsc(numberPersons : Int) : PeopleGroup?
 }
